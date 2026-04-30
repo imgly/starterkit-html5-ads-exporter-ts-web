@@ -253,20 +253,20 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
     // ============================================================================
 
     // #region Video Features
-    'ly.img.video' /* Enables all children below */,
-    // 'ly.img.video.timeline', /* Video Timeline visibility */
-    // 'ly.img.video.timeline.ruler', /* Timeline ruler/time scale */
-    // 'ly.img.video.timeline.clips', /* Clips track in timeline */
-    // 'ly.img.video.timeline.overlays', /* Overlays track in timeline */
-    // 'ly.img.video.timeline.audio', /* Audio track in timeline */
-    // 'ly.img.video.timeline.addClip', /* Add clips to timeline */
-    // 'ly.img.video.timeline.controls', /* Base video control UI */
-    // 'ly.img.video.timeline.controls.toggle', /* Timeline collapse/expand toggle */
-    // 'ly.img.video.timeline.controls.background', /* Background color controls */
-    // 'ly.img.video.timeline.controls.playback', /* Play/pause and timestamp */
-    // 'ly.img.video.timeline.controls.loop', /* Loop toggle */
-    // 'ly.img.video.timeline.controls.split', /* Split clip control */
-    // 'ly.img.video.timeline.controls.timelineZoom', /* Timeline zoom controls */
+    // 'ly.img.video' /* Enables all children below */,
+    'ly.img.video.timeline' /* Video Timeline visibility */,
+    'ly.img.video.timeline.ruler' /* Timeline ruler/time scale */,
+    'ly.img.video.timeline.clips' /* Clips track in timeline */,
+    'ly.img.video.timeline.overlays' /* Overlays track in timeline */,
+    'ly.img.video.timeline.audio' /* Audio track in timeline */,
+    'ly.img.video.timeline.addClip' /* Add clips to timeline */,
+    'ly.img.video.timeline.controls' /* Base video control UI */,
+    'ly.img.video.timeline.controls.toggle' /* Timeline collapse/expand toggle */,
+    'ly.img.video.timeline.controls.background' /* Background color controls */,
+    'ly.img.video.timeline.controls.playback' /* Play/pause and timestamp */,
+    'ly.img.video.timeline.controls.loop' /* Loop toggle */,
+    'ly.img.video.timeline.controls.split' /* Split clip control */,
+    'ly.img.video.timeline.controls.timelineZoom' /* Timeline zoom controls */,
     // 'ly.img.video.caption', /* Video captions */
     // #endregion
 
