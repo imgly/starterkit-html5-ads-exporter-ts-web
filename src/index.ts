@@ -1,8 +1,8 @@
 /**
  * CE.SDK HTML5 Exporter Starterkit - Main Entry Point
  *
- * A video editor with HTML5 export capabilities including embedded/external
- * format options, animation timeline, and ZIP download.
+ * A design editor with HTML5 export capabilities including embedded/external
+ * format options, GSAP animation support, and ZIP download.
  *
  * @see https://img.ly/docs/cesdk/js/getting-started/
  */
@@ -10,32 +10,37 @@
 import CreativeEditorSDK from '@cesdk/cesdk-js';
 
 import { initHtml5ExporterEditor } from './imgly';
+import { resolveAssetPath } from './imgly/resolveAssetPath';
 
 // ============================================================================
 // Configuration
 // ============================================================================
 
 const config = {
-  // Unique user identifier for analytics (customize for your app)
-  userId: 'starterkit-html5-ads-exporter-user'
+  userId: 'starterkit-html5-ads-exporter-user',
 
-  // Local assets (uncomment and set path for self-hosted assets)
-  // baseURL: `/assets/`,
+  // IMG.LY CDN (for quick testing only, NOT recommended for production)
 
-  // License key (required for production)
-  // license: 'YOUR_LICENSE_KEY',
+  // Local assets for development
+
 };
 
 // ============================================================================
-// Initialize HTML5 Exporter Editor
+// Initialize Editor
 // ============================================================================
 
-CreativeEditorSDK.create('#cesdk_container', config)
-  .then(async (cesdk) => {
+/**
+ * Initialize the CE.SDK HTML5 Exporter Editor
+ */
+async function initializeEditor(): Promise<void> {
+  try {
+    // Create new CE.SDK instance
+    const cesdk = await CreativeEditorSDK.create('#cesdk_container', config);
+
     // Debug access (remove in production)
     (window as any).cesdk = cesdk;
 
-    // Initialize the HTML5 exporter editor
+    // Initialize with HTML5 exporter configuration
     await initHtml5ExporterEditor(cesdk);
 
     // ============================================================================
@@ -43,11 +48,14 @@ CreativeEditorSDK.create('#cesdk_container', config)
     // ============================================================================
 
     // Load the HTML5 banner demo scene (an animated banner template)
-    await cesdk.engine.scene.loadFromArchiveURL(
-      'https://img.ly/showcases/cesdk/cases/html5-export/html5-banner.zip'
+    await cesdk.loadFromArchiveURL(
+      resolveAssetPath('/assets/html5-banner.zip')
     );
-  })
-  .catch((error) => {
+  } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Failed to initialize CE.SDK:', error);
-  });
+  }
+}
+
+// Start the editor
+initializeEditor();
