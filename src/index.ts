@@ -10,12 +10,22 @@
 import CreativeEditorSDK from '@cesdk/cesdk-js';
 
 import { initHtml5ExporterEditor } from './imgly';
-import { DEMO_ASSETS_BASE_URL } from './imgly/demo-assets';
 
 
 // ============================================================================
 // Configuration
 // ============================================================================
+
+/**
+ * Demo assets for this example (scene archives, …) are loaded from the
+ * IMG.LY CDN by default. To host them yourself, copy this kit's asset
+ * folder to your own CDN or server and change this constant — or set it to
+ * `''` and place the files in this app's `public/` directory. No trailing
+ * slash.
+ */
+export const DEMO_ASSETS_BASE_URL: string =
+  import.meta.env.VITE_DEMO_ASSETS_BASE_URL ||
+  'https://staticimgly.com/imgly/cesdk-web-examples-data/1.82.3/starterkit-html5-ads-exporter';
 
 const config = {
   userId: 'starterkit-html5-ads-exporter-user',
@@ -38,6 +48,8 @@ async function initializeEditor(): Promise<void> {
     // Create new CE.SDK instance
     const cesdk = await CreativeEditorSDK.create('#cesdk_container', config);
 
+    // Debug access (remove in production)
+    (window as any).cesdk = cesdk;
 
     // Initialize with HTML5 exporter configuration
     await initHtml5ExporterEditor(cesdk);
@@ -47,7 +59,9 @@ async function initializeEditor(): Promise<void> {
     // ============================================================================
 
     // Load the HTML5 banner demo scene (an animated banner template)
-    await cesdk.load(`${DEMO_ASSETS_BASE_URL}/assets/html5-banner.zip`);
+    await cesdk.load(
+      `${DEMO_ASSETS_BASE_URL}/assets/html5-banner.zip`
+    );
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Failed to initialize CE.SDK:', error);
