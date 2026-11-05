@@ -1,6 +1,7 @@
 {
   "name": "starterkit-html5-ads-exporter",
   "version": "1.0.0",
+  "type": "module",
   "description": "CE.SDK Starterkit - HTML5 Exporter",
   "scripts": {
     "dev": "vite",
@@ -9,13 +10,13 @@
     "check:syntax": "tsc --noEmit"
   },
   "dependencies": {
-    "@cesdk/cesdk-js": "^1.85.2",
+    "@cesdk/cesdk-js": "^1.86.0-rc.0",
     "@imgly/html-exporter": "^0.2.1",
-    "@cesdk/engine": "^1.85.2"
+    "@cesdk/engine": "^1.86.0-rc.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "typescript": "^5.0.0",
-    "vite": "^6.0.3"
+    "vite": "^8.3.4"
   }
 }
